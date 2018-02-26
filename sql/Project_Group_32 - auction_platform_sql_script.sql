@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `auction_platform`.`USERS` (
   `last_name` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `perrmission_level` INT NOT NULL COMMENT 'Permission level = 1 is admin level permissions (includes seller level permissions)\nPermision level = 2 is seller level permissions (includes buyer level permissions)\nPermission level = 3 is buyer level permissions',
+  `Permission_level` INT NOT NULL COMMENT 'Permission level = 1 is admin level permissions (includes seller level permissions)\nPermision level = 2 is seller level permissions (includes buyer level permissions)\nPermission level = 3 is buyer level permissions',
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
