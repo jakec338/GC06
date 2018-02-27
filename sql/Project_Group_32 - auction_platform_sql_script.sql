@@ -27,12 +27,43 @@ CREATE TABLE IF NOT EXISTS `auction_platform`.`USERS` (
   `last_name` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `Permission_level` INT NOT NULL COMMENT 'Permission level = 1 is admin level permissions (includes seller level permissions)\nPermision level = 2 is seller level permissions (includes buyer level permissions)\nPermission level = 3 is buyer level permissions',
+  `permission_level` VARCHAR(1) NOT NULL COMMENT 'Permission level = A is admin level permissions (includes seller level permissions)\npermission level = S is seller level permissions (includes buyer level permissions)\nPermission level = B is buyer level permissions',
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC))
 ENGINE = InnoDB;
+
+--
+-- Dumping data for table `Users`
+--
+
+INSERT INTO `USERS` (`user_id`, `username`, `first_name`, `last_name`, `email`, `password`, `permission_level`) VALUES
+( '1',  'adminuser1',  'John1',  'smith1',  'email 1@yahoo.co.uk',  'Passwordjohn1',  'A' ),
+( '2',  'adminuser2',  'John2',  'smith2',  'email 2@yahoo.co.uk',  'Passwordjohn2',  'A' ),
+( '3',  'adminuser3',  'John3',  'smith3',  'email 3@yahoo.co.uk',  'Passwordjohn3',  'A' ),
+( '4',  'buyeruser4',  'John4',  'smith4',  'email 4@yahoo.co.uk',  'Passwordjohn4',  'B' ),
+( '5',  'buyeruser5',  'John5',  'smith5',  'email 5@yahoo.co.uk',  'Passwordjohn5',  'B' ),
+( '6',  'buyeruser6',  'John6',  'smith6',  'email 6@yahoo.co.uk',  'Passwordjohn6',  'B' ),
+( '7',  'buyeruser7',  'John7',  'smith7',  'email 7@yahoo.co.uk',  'Passwordjohn7',  'B' ),
+( '8',  'buyeruser8',  'John8',  'smith8',  'email 8@yahoo.co.uk',  'Passwordjohn8',  'B' ),
+( '9',  'buyeruser9',  'John9',  'smith9',  'email 9@yahoo.co.uk',  'Passwordjohn9',  'B' ),
+( '10',  'buyeruser10',  'John10',  'smith10',  'email 10@yahoo.co.uk',  'Passwordjohn10',  'B' ),
+( '11',  'buyeruser11',  'John11',  'smith11',  'email 11@yahoo.co.uk',  'Passwordjohn11',  'B' ),
+( '12',  'buyeruser12',  'John12',  'smith12',  'email 12@yahoo.co.uk',  'Passwordjohn12',  'B' ),
+( '13',  'buyeruser13',  'John13',  'smith13',  'email 13@yahoo.co.uk',  'Passwordjohn13',  'B' ),
+( '14',  'selleruser14',  'John14',  'smith14',  'email 14@yahoo.co.uk',  'Passwordjohn14',  'S' ),
+( '15',  'selleruser15',  'John15',  'smith15',  'email 15@yahoo.co.uk',  'Passwordjohn15',  'S' ),
+( '16',  'selleruser16',  'John16',  'smith16',  'email 16@yahoo.co.uk',  'Passwordjohn16',  'S' ),
+( '17',  'selleruser17',  'John17',  'smith17',  'email 17@yahoo.co.uk',  'Passwordjohn17',  'S' ),
+( '18',  'selleruser18',  'John18',  'smith18',  'email 18@yahoo.co.uk',  'Passwordjohn18',  'S' ),
+( '19',  'selleruser19',  'John19',  'smith19',  'email 19@yahoo.co.uk',  'Passwordjohn19',  'S' ),
+( '20',  'selleruser20',  'John20',  'smith20',  'email 20@yahoo.co.uk',  'Passwordjohn20',  'S' );
+
+
+
+
+
 
 
 -- -----------------------------------------------------
@@ -56,6 +87,31 @@ CREATE TABLE IF NOT EXISTS `auction_platform`.`BUYERS` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+--
+ --  Dumping data for table `BUYERS`
+--
+
+INSERT INTO `BUYERS` (  `buyer_id`  ,  `USERS_user_id`  ,  `buyer_rating`  ,  `address_line_1`  ,  `address_line_2`  ,  `address_line_3`  ,  `address_city`  ,  `address_postcode`  ) VALUES
+( 41,  '1',  '5',  'address_line_1 _1',  'address_line_2 _1',  'address_line_3 _1',  'address_city _1',  'address_postcode _1' ),
+( 42,  '2',  '4',  'address_line_1 _2',  'address_line_2 _2',  'address_line_3 _2',  'address_city _2',  'address_postcode _2' ),
+( 43,  '3',  '3',  'address_line_1 _3',  'address_line_2 _3',  'address_line_3 _3',  'address_city _3',  'address_postcode _3' ),
+( 44,  '4',  '2',  'address_line_1 _4',  'address_line_2 _4',  'address_line_3 _4',  'address_city _4',  'address_postcode _4' ),
+( 45,  '5',  '1',  'address_line_1 _5',  'address_line_2 _5',  'address_line_3 _5',  'address_city _5',  'address_postcode _5' ),
+( 46,  '6',  '5',  'address_line_1 _6',  'address_line_2 _6',  'address_line_3 _6',  'address_city _6',  'address_postcode _6' ),
+( 47,  '7',  '4',  'address_line_1 _7',  'address_line_2 _7',  'address_line_3 _7',  'address_city _7',  'address_postcode _7' ),
+( 48,  '8',  '3',  'address_line_1 _8',  'address_line_2 _8',  'address_line_3 _8',  'address_city _8',  'address_postcode _8' ),
+( 49,  '9',  '2',  'address_line_1 _9',  'address_line_2 _9',  'address_line_3 _9',  'address_city _9',  'address_postcode _9' ),
+( 50,  '10',  '1',  'address_line_1 _10',  'address_line_2 _10',  'address_line_3 _10',  'address_city _10',  'address_postcode _10' ),
+( 51,  '11',  '5',  'address_line_1 _11',  'address_line_2 _11',  'address_line_3 _11',  'address_city _11',  'address_postcode _11' ),
+( 52,  '12',  '4',  'address_line_1 _12',  'address_line_2 _12',  'address_line_3 _12',  'address_city _12',  'address_postcode _12' ),
+( 53,  '13',  '3',  'address_line_1 _13',  'address_line_2 _13',  'address_line_3 _13',  'address_city _13',  'address_postcode _13' ),
+( 54,  '14',  '2',  'address_line_1 _14',  'address_line_2 _14',  'address_line_3 _14',  'address_city _14',  'address_postcode _14' ),
+( 55,  '15',  '1',  'address_line_1 _15',  'address_line_2 _15',  'address_line_3 _15',  'address_city _15',  'address_postcode _15' ),
+( 56,  '16',  '2',  'address_line_1 _16',  'address_line_2 _16',  'address_line_3 _16',  'address_city _16',  'address_postcode _16' ),
+( 57,  '17',  '3',  'address_line_1 _17',  'address_line_2 _17',  'address_line_3 _17',  'address_city _17',  'address_postcode _17' ),
+( 58,  '18',  '4',  'address_line_1 _18',  'address_line_2 _18',  'address_line_3 _18',  'address_city _18',  'address_postcode _18' ),
+( 59,  '19',  '5',  'address_line_1 _19',  'address_line_2 _19',  'address_line_3 _19',  'address_city _19',  'address_postcode _19' ),
+( 60,  '20',  '2',  'address_line_1 _20',  'address_line_2 _20',  'address_line_3 _20',  'address_city _20',  'address_postcode _20' );
 
 -- -----------------------------------------------------
 -- Table `auction_platform`.`SELLERS`
@@ -74,6 +130,22 @@ CREATE TABLE IF NOT EXISTS `auction_platform`.`SELLERS` (
 ENGINE = InnoDB;
 
 
+--
+ --  Dumping data for table `SELLERS`
+--
+INSERT INTO `SELLERS` (  `seller_id`  ,  `USERS_user_id`  ,  `seller_rating`  ) VALUES
+(  '61',  '1',  '5' ),
+(  '62',  '2',  '4' ),
+(  '63',  '3',  '3' ),
+(  '64',  '14',  '2' ),
+(  '65',  '15',  '1' ),
+(  '66',  '16',  '5' ),
+(  '67',  '17',  '4' ),
+(  '68',  '18',  '3' ),
+(  '69',  '19',  '2' ),
+(  '70',  '20',  '1' );
+
+
 -- -----------------------------------------------------
 -- Table `auction_platform`.`LISTED_ITEMS`
 -- -----------------------------------------------------
@@ -84,8 +156,8 @@ CREATE TABLE IF NOT EXISTS `auction_platform`.`LISTED_ITEMS` (
   `item_description` VARCHAR(450) NOT NULL,
   `item_start_price` DECIMAL NULL,
   `item_reserve_price` DECIMAL NULL,
-  `item_listing_start_time` DATETIME NOT NULL,
-  `item_listing_end_time` DATETIME NOT NULL,
+  `item_listing_start_time` VARCHAR(45) NOT NULL,
+  `item_listing_end_time` VARCHAR(45) NOT NULL,
   `item_image1` VARCHAR(45) NULL,
   `item_image2` VARCHAR(45) NULL,
   `item_image3` VARCHAR(45) NULL,
@@ -97,6 +169,24 @@ CREATE TABLE IF NOT EXISTS `auction_platform`.`LISTED_ITEMS` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `auction_platform`.`LISTED_ITEMS`
+-- -----------------------------------------------------
+
+INSERT INTO `LISTED_ITEMS` (  `auction_listing_nbr`  ,  `sellers_seller_id`  ,  `item_title`  ,  `item_description`  ,  `item_start_price`  ,  `item_reserve_price`  ,  `item_listing_start_time`  ,  `item_listing_end_time`  ,  `item_image1`  ,  `item_image2`  ,  `item_image3`  ) VALUES
+(  '1001',  '61',  'Chair',  'Nice chair',  '25',  '23', '01/03/2018  10:00:00', '01/09/2018  10:00:00', 'item_image1_1',  'item_image2_1',  'item_image3_1' ),
+(  '1002',  '62',  'Laptop',  'Nice laptop',  '300',  '298',  '01/03/2018  10:00:00',  '01/09/2018  10:00:00',  'item_image1_2',  'item_image2_2',  'item_image3_2' ),
+(  '1003',  '63',  'Football',  'Nice football',  '9.85',  '7.85',  '01/03/2018  10:00:00',  '01/09/2018  10:00:00',  'item_image1_3',  'item_image2_3',  'item_image3_3' ),
+(  '1004',  '64',  'Painting',  'Nice Painting',  '45',  '43',  '01/03/2018  10:00:00',  '01/09/2018  10:00:00',  'item_image1_4',  'item_image2_4',  'item_image3_4' ),
+(  '1005',  '65',  'Adele CD',  'Nice Adele CD',  '5',  '3',  '01/03/2018  10:00:00',  '01/09/2018  10:00:00',  'item_image1_5',  'item_image2_5',  'item_image3_5' ),
+(  '1006',  '66',  'Plant pot',  'Nice Plant pot',  '3',  '1',  '01/03/2018  10:00:00',  '01/09/2018  10:00:00',  'item_image1_6',  'item_image2_6',  'item_image3_6' ),
+(  '1007',  '67',  'Walkman',  'Nice Walkman',  '45',  '43',  '01/03/2018  10:00:00',  '01/09/2018  10:00:00',  'item_image1_7',  'item_image2_7',  'item_image3_7' ),
+(  '1008',  '68',  'Hockey Stick',  'Nice Hockey Stick',  '13',  '11',  '01/03/2018  10:00:00',  '01/09/2018  10:00:00',  'item_image1_8',  'item_image2_8',  'item_image3_8' ),
+(  '1009',  '69',  'Paint brush',  'Nice Paint brush',  '1.99',  '1',  '01/03/2018  10:00:00',  '01/09/2018  10:00:00',  'item_image1_9',  'item_image2_9',  'item_image3_9' ),
+(  '1010',  '70',  'Coldplay CD',  'Nice Coldplay CD',  '2.99',  '0.99',  '01/03/2018  10:00:00',  '01/09/2018  10:00:00',  'item_image1_10',  'item_image2_10',  'item_image3_10' );
+
+
 
 
 -- -----------------------------------------------------
@@ -123,6 +213,23 @@ CREATE TABLE IF NOT EXISTS `auction_platform`.`BIDS` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+--
+ --  Dumping data for table `BIDS`
+--
+
+INSERT INTO `BIDS` (  `bid_nbr`  ,  `BUYERS_buyer_id`  ,  `bid_amount`  ,  `bid_time`  ,  `LISTED_ITEMS_auction_listing_nbr`  ) VALUES
+( '101',  '41',  '11.99', '01/03/2018  10:00:00', '1001' ),
+( '102',  '42',  '12.99', '01/03/2018  10:00:00',  '1002' ),
+( '103',  '43',  '13.99', '01/03/2018  10:00:00',  '1003' ),
+( '104',  '44',  '14.99', '01/03/2018  10:00:00', '1004' ),
+( '105',  '45',  '15.99', '01/03/2018  10:00:00',  '1005' ),
+( '106',  '46',  '16.99', '01/03/2018  10:00:00', '1006' ),
+( '107',  '47',  '17.99', '01/03/2018  10:00:00', '1007' ),
+( '108',  '48',  '18.99', '01/03/2018  10:00:00', '1008' ),
+( '109',  '49',  '19.99', '01/03/2018  10:00:00', '1009' ),
+( '110',  '50',  '20.99', '01/03/2018  10:00:00', '1010' );
+
+
 
 -- -----------------------------------------------------
 -- Table `auction_platform`.`ADMINS`
@@ -144,28 +251,19 @@ CREATE TABLE IF NOT EXISTS `auction_platform`.`ADMINS` (
     FOREIGN KEY (`USERS_user_id`)
     REFERENCES `auction_platform`.`USERS` (`user_id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ADMINS_BUYERS1`
-    FOREIGN KEY (`BUYERS_buyer_id`)
-    REFERENCES `auction_platform`.`BUYERS` (`buyer_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ADMINS_SELLERS1`
-    FOREIGN KEY (`SELLERS_seller_id`)
-    REFERENCES `auction_platform`.`SELLERS` (`seller_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ADMINS_BIDS1`
-    FOREIGN KEY (`BIDS_bid_nbr`)
-    REFERENCES `auction_platform`.`BIDS` (`bid_nbr`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ADMINS_LISTED_ITEMS1`
-    FOREIGN KEY (`LISTED_ITEMS_auction_listing_nbr`)
-    REFERENCES `auction_platform`.`LISTED_ITEMS` (`auction_listing_nbr`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+ 
 ENGINE = InnoDB;
+
+
+--
+ --  Dumping data for table `ADMINS`
+--
+INSERT INTO `ADMINS` (  `admin_id`  ,  `USERS_user_id`  ,  `BUYERS_buyer_id`  ,  `SELLERS_seller_id`  ,  `BIDS_bid_nbr`  ,  `LISTED_ITEMS_auction_listing_nbr`  ) VALUES
+(  '21',  '1',  '41',  '61',  '1001',  '1001' ),
+(  '22',  '2',  '42',  '62',  '1002',  '1002' ),
+(  '23',  '3',  '43',  '63',  '1003',  '1003' );
+
 
 
 -- -----------------------------------------------------
@@ -181,6 +279,23 @@ CREATE TABLE IF NOT EXISTS `auction_platform`.`CATEGORIES` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+
+--
+ --  Dumping data for table `CATEGORIES`
+--
+
+INSERT INTO `CATEGORIES` (  `LISTED_ITEMS_auction_listing_nbr`  ,  `category`  ) VALUES
+(  '1001',  'Home & Garden' ),
+(  '1002',  'Electronics' ),
+(  '1003',  'Sports' ),
+(  '1004',  'Art' ),
+(  '1005',  'Music' ),
+(  '1006',  'Home & Garden' ),
+(  '1007',  'Electronics' ),
+(  '1008',  'Sports' ),
+(  '1009',  'Art' ),
+(  '1010',  'Music' );
 
 
 -- -----------------------------------------------------
@@ -232,6 +347,8 @@ CREATE TABLE IF NOT EXISTS `auction_platform`.`RATINGS_AND_FEEDBACK` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+
 
 
 -- -----------------------------------------------------
