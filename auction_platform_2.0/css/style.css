@@ -22,3 +22,22 @@ body {
 .icon-gradient2, .icon-gradient2:before {
     color: #434343;
 }
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+table tr.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+table tr.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}

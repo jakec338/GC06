@@ -15,7 +15,7 @@ function send_email($sending_email, $sending_text, $subject) {
 	$mail->Port = 587;
 
 	$mail->setFrom(EMAIL, 'Auction Platform');
-	$mail->addAddress('me.hira.kafle@gmail.com'); //TODO: replace email id with the argument
+	$mail->addAddress($sending_email); //TODO: replace email id with the argument
 	$mail->addReplyTo(EMAIL);
 
 	$mail->isHTML(true);

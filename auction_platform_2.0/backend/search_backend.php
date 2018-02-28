@@ -2,6 +2,8 @@
 	require('../connection.php');
     // If the values are posted, insert them into the database.
     $search_results = array();
+    $msg = "";
+    $error_code = "1";
     if (isset($_POST['searched_item']) && isset($_POST['category_query'])){
 		$searched_item = $_POST['searched_item'];
         $category_query = $_POST['category_query'];
@@ -58,9 +60,12 @@
                 $msg = strval($count)." items found";
             }
         } else {
-            $error_code = 0;
+            $error_code = "0";
             $msg = "No such items";
         }
+    } else {
+        $error_code = "1";
+        $msg = "Required values not sent in the request";
     }
     $arr = array('msg' => $msg, 'error_code' => $error_code,
     'search_results' => $search_results);

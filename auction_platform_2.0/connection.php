@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$connection = mysqli_connect('localhost', 'root', '');
+	$connection = mysqli_connect('localhost', 'root', 'root');
 	if (!$connection){
 	    die("Database Connection Failed" . mysqli_error($connection));
 	}

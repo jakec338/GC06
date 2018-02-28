@@ -1,35 +1,41 @@
 <?php
     require('../connection.php');
+    require_once 'watching_auctions_backend.php';
     $msg = "error";
     $error_code = "1";
     $bought_items = array();
     $user_bought_items = array();
+    $watching_auctions = array();
     if (isset($_POST['email']) && isset($_POST['user_type'])) {
         $email = $_POST['email'];
         $user_type = $_POST['user_type'];
         $user_id = -1;
-        if ($user_type == "buyer" || $user_type == "both") {
-            $query = "SELECT * from `buyer_accounts` where Email='$email'";
-            $result = mysqli_query($connection, $query);
-            if (!$result) {
-                $msg = "Could not run query ".mysql_error();
-                $error_code = 1;
-            } else {
-                $row = $result->fetch_row();
-                $user_id = $row[0];
-            }
-        } else if ($user_type == "seller") {
-            //check if it is seller
-            $query = "SELECT * from `seller_accounts` where Email='$email'";
-            $result = mysqli_query($connection, $query);
-            if (!$result) {
-                $msg = "Could not run query ".mysql_error();
-                $error_code = 1;
-            } else {
-                $row = $result->fetch_row();
-                $user_id = $row[0];
-            }
-        }
+        $query = "SELECT * from `user` where Email='$email'";
+        $result = mysqli_query($connection, $query);
+        $row = $result->fetch_row();
+        $user_id = $row[0];
+        // if ($user_type == "buyer" || $user_type == "both") {
+        //     $query = "SELECT * from `buyer_accounts` where Email='$email'";
+        //     $result = mysqli_query($connection, $query);
+        //     if (!$result) {
+        //         $msg = "Could not run query ".mysql_error();
+        //         $error_code = 1;
+        //     } else {
+        //         $row = $result->fetch_row();
+        //         $user_id = $row[0];
+        //     }
+        // } else if ($user_type == "seller") {
+        //     //check if it is seller
+        //     $query = "SELECT * from `seller_accounts` where Email='$email'";
+        //     $result = mysqli_query($connection, $query);
+        //     if (!$result) {
+        //         $msg = "Could not run query ".mysql_error();
+        //         $error_code = 1;
+        //     } else {
+        //         $row = $result->fetch_row();
+        //         $user_id = $row[0];
+        //     }
+        // }
 
         if ($user_id >= 0) {
             $query = "SELECT * from `bids`"; //where Buyer_Accounts_buyer_id='$user_id'
@@ -76,16 +82,21 @@
                 }
             }
 
+            $result = watching_auctions($connection,$user_id);
+            while($row = $result->fetch_row()) {
+                array_push($watching_auctions, $row[1]);
+            }
+
             $msg = "Successfully received activities";
-            $error_code = 0;
+            $error_code = "0";
 
         } else {
             $msg = "No such buyer";
-            $error_code = 1;
+            $error_code = "1";
         }
     }
     $arr = array('msg' => $msg, 'error_code' => $error_code, 'ongoing_auctions' => $bought_items,
-    'ongoing_auctions_of_user' => $user_bought_items);
+    'ongoing_auctions_of_user' => $user_bought_items, 'watching_auctions' => $watching_auctions);
     echo json_encode($arr);
 
 ?>

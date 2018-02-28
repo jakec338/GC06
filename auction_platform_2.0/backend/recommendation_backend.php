@@ -9,18 +9,18 @@
         $user_id = -1;
         if ($user_type == "buyer" || $user_type == "both") {
             //check if the email already exists
-            $query = "SELECT * from `buyer_accounts` where Email='$email'";
+            $query = "SELECT * from `user` where Email='$email'";
             $result = mysqli_query($connection, $query);
             if (!$result) {
                 $msg = "Could not run query ".mysql_error();
-                $error_code = 1;
+                $error_code = "1";
             } else {
                 $row = $result->fetch_row();
                 $user_id = $row[0];
             }
         } else {
             $msg = "The user is not a buyer, no recommendations";
-            $error_code = 1;
+            $error_code = "1";
         }
 
         if ($user_id >= 0) {
@@ -70,7 +70,7 @@
 
         } else {
             $msg = "No such buyer";
-            $error_code = 1;
+            $error_code = "1";
         }
     }
     $arr = array('msg' => $msg, 'error_code' => $error_code, 'recommended_items' => $recommended_items);

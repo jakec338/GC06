@@ -9,13 +9,13 @@
     $count = 0;
     $total_categories = array();
     if(mysqli_num_rows($result)>0) {
-        $error_code = 0;
+        $error_code = "0";
         $msg = "Successfully retrieved categories";
         while ($row = $result->fetch_row()) {
             array_push($total_categories,$row);
         }
     } else {
-        $error_code = 0;
+        $error_code = "0";
         $msg = "Not any categories";
     }
     

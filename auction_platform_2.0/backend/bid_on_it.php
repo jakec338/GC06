@@ -21,16 +21,25 @@
 
             $result = mysqli_query($connection, $query);
             if($result) {
-                
                 // $_SESSION['logged'] = '1';
                 //send email to seller
-                $query1 = "SELECT Seller_Accounts_seller_id,item_description from `listed_items` where item_id='$bid_item_id'";
+                $query1 = "SELECT * from `bids` INNER JOIN `user` on `bids`.Buyer_Accounts_buyer_id = `user`.user_id  where Listed_Items_item_id='$bid_item_id' && bid_price < $bid_price";
+                $result1 = mysqli_query($connection, $query1);
+                while ($row = $result1->fetch_row()){
+                    $email_id = $row[9];
+                    $email_text = "User ".$user_name." has outbided your bid on item ".$row[1];
+                    $subject = "Outbided";
+                    send_email($email_id,$email_text,$subject);
+                }
+
+                $query1 = "SELECT * FROM `bids` INNER JOIN `listed_items` on `bids`.Listed_Items_item_id = `listed_items`.item_id INNER JOIN `user` ON `listed_items`.Seller_Accounts_seller_id=`user`.user_id where Listed_Items_item_id='$bid_item_id'";
                 $result1 = mysqli_query($connection, $query1);
                 $row = $result1->fetch_row();
-                $email_id = $row[0];
+                $email_id = $row[17];
                 $email_text = "User ".$user_name." has bidded on your item ".$row[1];
                 $subject = "New Bid on Your Item";
                 send_email($email_id,$email_text,$subject);
+
 
                 $error_code = "0";
                 $msg = "Bid Successfull.";
