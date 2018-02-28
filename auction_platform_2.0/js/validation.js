@@ -81,3 +81,44 @@ function isValidForm() {
 
     return true;
   }
+
+
+  function isValidItemAdd() {
+    //assuming everything is valid
+    //TODO: have to check on client side if everything is valid
+    var item_description = $("#item_description").val();
+    var item_category = $("#item_category").val();
+    var item_start_price = $("#item_start_price").val();
+    var item_reserve_price = $("#item_reserve_price").val();
+    var item_end_date = $("#item_end_date").val();
+
+    // if (email == "" || password == "") {
+    //   $("#success-info").css("display","none");
+    //   $("#danger-info").css("display","block");
+    //   $("#danger-info").html("All fields are necessary");
+    //   return false;
+    // }
+
+    $.ajax({ url: 'backend/create_item.php',
+         data: {
+          'item_description': item_description,
+          'item_category': item_category,
+          'item_start_price': item_start_price,
+          'item_reserve_price': item_reserve_price,
+          'item_end_date': item_end_date
+        },
+         type: 'post',
+         success: function(output2) {
+              output2 = JSON.parse(output2);
+             if (output2.error_code=="0") {
+                window.location.href = "profile.php";
+             } else if (output2.error_code =="1"){
+              window.location.href = "sell.php";
+             } else if (output2.error_code =="3") {
+              window.location.href = "login.php";
+             }
+         }
+    });
+
+    return true;
+  }

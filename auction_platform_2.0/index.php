@@ -24,7 +24,7 @@
         <nav class="my-2 my-md-0 mr-md-3">
           <a class="p-2 text-dark" href="index.php">Home</a>
           <a class="p-2 text-dark" href="buy.php">Buy</a>
-          <a class="p-2 text-dark" href="#">Sell</a>
+          <a class="p-2 text-dark" href="sell.php">Sell</a>
         </nav>
         <a class="btn btn-outline-primary mr-sm-2" href="signup.php">Sign up</a>
         <a class="btn btn-outline-primary" href="login.php">Login</a>

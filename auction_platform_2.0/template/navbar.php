@@ -13,7 +13,7 @@
 		</nav>
 	<?php
 	} else {?>
-		<a class="btn btn-outline-primary mr-sm-2" href="signup.php">Sign up</a>
+		<a class="btn btn-outline-primary mr-sm-2" href="signup.php">Signyfv up</a>
 		<a class="btn btn-outline-primary" href="login.php">Sign in</a>
 	<?php }?>
 </div>
