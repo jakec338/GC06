@@ -6,7 +6,7 @@
 </head>
 <body>
   <div class="container">
-    <?php include ('template/navbar.php');?>
+    <!-- <?php include ('template/navbar.php');?> -->
     <form class="form-signin">
       <div class="align-center">
         <i class="icon-gradient fab fa-adn fa-5x" ></i>

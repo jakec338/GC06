@@ -1,6 +1,7 @@
 <?php
     require('connection.php');
     // If the values are posted, insert them into the database.
+    
     if (isset($_POST['email']) && isset($_POST['password'])&&isset($_POST['secretkey'])){
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -15,7 +16,7 @@
 
         if($user_privilege=="0"){
        
-            $query1="SELECT * from `adminstrator_account` where administrator_id=$user_id";
+            $query1="SELECT * from `adminstrator_accounts` where administrator_id=$user_id";
             $result1=mysql_query($query1);
              if(mysqli_num_rows($result1)>0){
                  $msg = "Admin logged in successfully";

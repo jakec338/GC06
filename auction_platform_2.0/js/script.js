@@ -28,3 +28,10 @@ function createGradient(svg,id,stops){
       svg.insertBefore( document.createElementNS(svgNS,'defs'), svg.firstChild);
   return defs.appendChild(grad);
 }
+
+
+function logout(){
+  $_SESSION["admin_id"] = null;
+  window.location.href = "index.php";
+}
+

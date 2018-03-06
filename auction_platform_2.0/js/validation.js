@@ -71,7 +71,7 @@ function isValidForm() {
              if (output.error_code=="0") {
                 $("#success-info").css("display","block");
                 $("#danger-info").css("display","none");
-                $("#success-info").html(output.msg);
+                $("#success-info").html("fuj");
                 window.location.href = "profile.php";
              } else {
                 $("#success-info").css("display","none");
@@ -85,4 +85,50 @@ function isValidForm() {
   }
   
 
-  
+
+  function isValidItemAdd() {
+    //assuming everything is valid
+    //TODO: have to check on client side if everything is valid
+    var item_description = $("#item_description").val();
+    var item_category = $("#item_category").val();
+    var item_start_price = $("#item_start_price").val();
+    var item_reserve_price = $("#item_reserve_price").val();
+    var item_end_date = $("#item_end_date").val();
+    var item_image = $("#item_image").files[0];
+    if (item_description == "" || item_category == "") {
+      $("#success-info").css("display","none");
+      $("#danger-info").css("display","block");
+      $("#danger-info").html("All fields are necessary");
+      return false;
+    }
+    console.log(item_image);
+    
+
+    $.ajax({ url: 'backend/create_item.php',
+         data: {
+          'item_description': item_description,
+          'item_category': item_category,
+          'item_start_price': item_start_price,
+          'item_reserve_price': item_reserve_price,
+          'item_end_date': item_end_date,
+          'item_image': item_image
+        },
+         type: 'post',
+         success: function(output2) {
+              output2 = JSON.parse(output2);
+             if (output2.error_code=="0") {
+                window.location.href = "profile.php";
+                $("#success-info").css("display","block");
+                $("#danger-info").css("display","none");
+                $("#success-info").html(output2.msg);
+             } else if (output2.error_code =="1"){
+                $("#success-info").css("display","none");
+                $("#danger-info").css("display","block");
+                $("#danger-info").html(output2.msg);
+             } else if (output2.error_code =="3") {
+              window.location.href = "login.php";
+             }
+         }
+    });
+    return true;
+  }

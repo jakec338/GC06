@@ -12,7 +12,7 @@
 				<a class="p-2 text-dark" href="buy.php">Buy</a>
 			<?php } ?>
 			<?php if($_SESSION['logged']=="seller" || isset($_SESSION['is_both'])){ ?>
-				<a class="p-2 text-dark" href="#">Sell</a>
+				<a class="p-2 text-dark" href="sell.php">Sell</a>
 			<?php } ?>
 			<a class="btn btn-outline-primary" href="logout.php">Log out</a>
 		</nav>

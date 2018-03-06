@@ -11,7 +11,7 @@
             $query = "SELECT * from `buyer_accounts` where Email='$email'";
             $result = mysqli_query($connection, $query);
             if (!$result) {
-                $msg = "Could not run query ".mysql_error();
+                $msg = mysqli_error("Could not run query ");
                 $error_code = 1;
             } else {
                 $row = $result->fetch_row();
@@ -22,7 +22,7 @@
             $query = "SELECT * from `seller_accounts` where Email='$email'";
             $result = mysqli_query($connection, $query);
             if (!$result) {
-                $msg = "Could not run query ".mysql_error();
+                $msg = mysqli_error("Could not run query ");
                 $error_code = 1;
             } else {
                 $row = $result->fetch_row();
