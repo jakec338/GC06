@@ -1,3 +1,5 @@
+<?php include '.\phpadmin\admin_db_connect.php'; ?>
+
 <!DOCTYPE html>
 
 <html>

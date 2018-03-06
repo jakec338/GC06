@@ -1,4 +1,4 @@
-<?php include 'phpadmin\admin_db_connect.php'; ?>
+<?php include '.\phpadmin\admin_db_connect.php'; ?>
 
 
 <!DOCTYPE html>
