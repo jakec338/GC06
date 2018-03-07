@@ -1,4 +1,4 @@
-<?php include '..\phpadmin\admin_db_connect.php'; ?>
+<?php include './phpadmin/admin_db_connect.php'; ?>
 
 <!DOCTYPE html>
 
@@ -62,7 +62,7 @@
 	
 <div class="container">
 
-<?php include '..\phpadmin\admin_listed_items_list.php'; ?>
+<?php include './phpadmin/admin_listed_items_list.php'; ?>
 
 </div>
 
@@ -72,7 +72,7 @@
 	
 <div class="container">
 
-<?php include '..\phpadmin\admin_bids_list.php'; ?>
+<?php include './phpadmin/admin_bids_list.php'; ?>
 
 </div>
 

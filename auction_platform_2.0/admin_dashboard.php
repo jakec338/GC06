@@ -1,4 +1,4 @@
-<?php include '..\phpadmin\admin_db_connect.php'; ?>
+<?php include './phpadmin/admin_db_connect.php'; ?>
 
 
 <!DOCTYPE html>
@@ -65,21 +65,21 @@
 <div id="admin_accounts_btn"></div>		  
 <div class="container">
 
-<?php include '..\phpadmin\admin_user_accounts_list.php'; ?>
+<?php include './phpadmin/admin_user_accounts_list.php'; ?>
 
 </div>
 
 <div id="seller_accounts_btn"></div>	
 <div class="container">
 
-<?php include '..\phpadmin\seller_user_accounts_list.php'; ?>
+<?php include './phpadmin/seller_user_accounts_list.php'; ?>
 
 </div>
 
 <div id="buyer_accounts_btn"></div>
 <div class="container">
 
-<?php include '..\phpadmin\buyer_user_accounts_list.php'; ?>
+<?php include './phpadmin/buyer_user_accounts_list.php'; ?>
 
 </div>
 		 
