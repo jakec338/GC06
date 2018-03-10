@@ -24,15 +24,15 @@
 <!-- <br> -->
   <div>
   <!-- <button type="button" class="btn btn-outline-success my-2 my-sm-0">Add Listing</button> -->
-  <a class="btn btn-outline-primary" href="add_item.php">Add Listing</a>
   <a class="btn btn-outline-primary" onclick="showSelling()">Current Auctions</a>
   <a class="btn btn-outline-primary" onclick="showSold()">Past Auctions</a>
+  <a class="btn btn-outline-primary" href="add_item.php">Add Listing</a>
   </div>
 
 
 
 <div id="selling" >
-  <h1>Your Items Auctioning Now</h1>
+  <h1>Your Current Auctions</h1>
   <?php $get_selling_items = get_selling_items($connection, $_SESSION['logged_in_user_id']); ?>
   <?php
         // 3. Use returned data (if any)
@@ -91,9 +91,9 @@
         </script><?php 
 
           if ($row['MAX(bid_price)'] == null){
-            $row['MAX(bid_price)'] = "No Sale"; 
+            $max_bid = "No Sale"; 
           } else {
-            $row['MAX(bid_price)'] = "SOLD: £" + $row['MAX(bid_price)'];
+            $max_bid = "SOLD: £{$row['MAX(bid_price)']}" ;
           }
           ?>
     
@@ -104,7 +104,7 @@
                       <div class="card-body">
                           <a class="d-inline-block mb-2 text-dark" href="#">
                               <b><?php echo $sold_items["item_description"]?></b>
-                                <h3 class="mb-0"><?php echo $row['MAX(bid_price)'] ?> </h3>
+                                <h3 class="mb-0"><?php echo $max_bid?> </h3>
                                 <div class="mb-1">Reserve</div>
                                 <div class="mb-1 text-muted strike"><?php echo $sold_items["item_reserve_price"]?></div></a>
                                   <p class="card-text">Beautiful long mirror can stand elegantly in any dressing room.</p>
