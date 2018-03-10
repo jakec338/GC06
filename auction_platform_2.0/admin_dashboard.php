@@ -1,4 +1,4 @@
-<?php include './phpadmin/admin_db_connect.php'; ?>
+<?php include 'connection.php'; ?>
 
 
 <!DOCTYPE html>
@@ -15,11 +15,12 @@
  
      <!-- Custom styles for admin dashboard -->
   
-     <link href="css/admin_dashboard.css" rel="stylesheet">
+     <!-- <link href="css/admin_dashboard.css" rel="stylesheet"> -->
   
      <!-- Bootstrap core CSS -->
    
      <link href="css/bootstrap.min.css" rel="stylesheet">
+	 <script type="text/javascript" src="js/admin.js"></script>
 
    </head>
 
@@ -49,9 +50,9 @@
 		  <p class="lead text-muted">Choose from below to exercise administrator editing privileges.</p>
           
 		  <p>
-			<a class="btn btn-outline-info btn-lg" href="#admin_accounts_btn" >View Administrator Accounts</a>
-			<a class="btn btn-outline-info btn-lg" href="#seller_accounts_btn">View Seller Accounts</a>
-			<a class="btn btn-outline-info btn-lg" href="#buyer_accounts_btn">View Buyer Accounts</a>
+			<a class="btn btn-outline-info btn-lg" href="#admin_accounts_btn" onclick="showAdmins()">View Administrator Accounts</a>
+			<a class="btn btn-outline-info btn-lg" href="#seller_accounts_btn" onclick="showSellers()">View Seller Accounts</a>
+			<a class="btn btn-outline-info btn-lg" href="#buyer_accounts_btn"  onclick="showBuyers()">View Buyer Accounts</a>
  
 			<p class="lead text-muted"></p>
 			<p class="lead text-muted"></p>
@@ -62,22 +63,23 @@
 		</div>
       </section>
 
-<div id="admin_accounts_btn"></div>		  
-<div class="container">
+<div id="admin_accounts_btn"></div>
+	  
+<div class="container" id="admin_accounts_list">
 
 <?php include './phpadmin/admin_user_accounts_list.php'; ?>
 
 </div>
 
 <div id="seller_accounts_btn"></div>	
-<div class="container">
+<div class="container" id="seller_accounts_list" style="display:none">
 
 <?php include './phpadmin/seller_user_accounts_list.php'; ?>
 
 </div>
 
 <div id="buyer_accounts_btn"></div>
-<div class="container">
+<div class="container" id="buyer_accounts_list" style="display:none">
 
 <?php include './phpadmin/buyer_user_accounts_list.php'; ?>
 
@@ -85,3 +87,5 @@
 		 
 </body>
 </html>
+
+
