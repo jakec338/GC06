@@ -58,6 +58,45 @@ function isValidForm() {
     return true;
   }
 
+
+  function isAdminLoginValid() {
+    console.log("tets");
+    var email = $("#email").val();
+    var password = $("#password").val();
+    if (email == "" || password == "") {
+      $("#success-info").css("display","none");
+      $("#danger-info").css("display","block");
+      $("#danger-info").html("All fields are necessary");
+      return false;
+    }
+
+    $.ajax({ url: 'admin_login_backend.php',
+         data: {
+          'email': email,
+          'password': password,
+        },
+         type: 'post',
+         success: function(output) {
+          //  console.log(output)
+          alert(output);
+               output = JSON.parse(output);
+             if (output.error_code=="0") {
+                $("#success-info").css("display","block");
+                $("#danger-info").css("display","none");
+                $("#success-info").html(output.msg);
+                window.location.href = "admin_dashboard.php";
+             } else {
+                $("#success-info").css("display","none");
+                $("#danger-info").css("display","block");
+                $("#danger-info").html(output.msg);
+                window.location.href = "index.php";
+             }
+         }
+    });
+
+    return true;
+  }
+
   function isValidLogin() {
     //assuming everything is valid
     //TODO: have to check on client side if everything is valid
