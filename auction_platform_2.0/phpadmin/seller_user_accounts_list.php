@@ -3,8 +3,9 @@
 	
 	echo '<div style="width:100%; float:left;"id="seller_accounts"><h2>Seller Accounts</h2></div>';
 		  
-	$sql = "SELECT seller_id,fullname,email,password FROM seller_accounts ORDER BY seller_id";
-	$result = $conn -> query($sql);
+	$sql = "SELECT * FROM user INNER JOIN seller_accounts ON user.user_id = seller_id ORDER BY seller_id";
+
+	$result = $connection -> query($sql);
 
 	if ($result -> num_rows > 0) {
 	echo '
@@ -12,17 +13,15 @@
 	<thead class="thead-dark">
 	<th>Seller ID</th>
 	<th>Full Name</th>
-	<th>email</th>
-	<th>Password</th>
+	<th>Email</th>
 	</tr>';
 
 	while ($row = $result -> fetch_assoc()) {
 	echo "
 	<tr>
-		<td>" . $row["seller_id"] . "</td>
-		<td>" . $row["fullname"] . "</td>
-		<td>" . $row["email"] . "</td>
-		<td>" . $row["password"] ."</td>
+		<td>" . $row["user_id"] . "</td>
+		<td>" . $row["Fullname"] . "</td>
+		<td>" . $row["Email"] . "</td>
 	</tr>";
 	}
 

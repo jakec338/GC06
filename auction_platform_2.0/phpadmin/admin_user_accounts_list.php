@@ -4,24 +4,24 @@
 	
 	echo '<div style="width:100%; float:left;"id="admin_accounts"><h2>Administrator Accounts</h2></div>';
 		  
-	$sql = "SELECT administrator_id,admin_name,admin_surname FROM administrator_accounts ORDER BY administrator_id";
-	$result = $conn -> query($sql);
+	$sql = "SELECT * FROM user INNER JOIN administrator_accounts ON user.user_id = administrator_id";
+	$result = $connection -> query($sql);
 
 	if ($result -> num_rows > 0) {
 	echo '
 	<table class="table">
 	<thead class="thead-dark">
 	<th>Administrator ID</th>
-	<th>First Name</th>
-	<th>Surname</th>
+	<th>Full name</th>
+	<th>Email</th>
 	</tr>';
 
 	while ($row = $result -> fetch_assoc()) {
 	echo "
 	<tr>
-		<td>" . $row["administrator_id"] . "</td>
-		<td>" . $row["admin_name"] . "</td>
-		<td>" . $row["admin_surname"] . "</td>
+		<td>" . $row["user_id"] . "</td>
+		<td>" . $row["Fullname"] . "</td>
+		<td>" . $row["Email"] . "</td>
 	</tr>";
 	}
 
