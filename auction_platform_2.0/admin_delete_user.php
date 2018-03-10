@@ -1,4 +1,4 @@
-<?php include './phpadmin/admin_db_connect.php'; ?>
+<?php include 'connection.php'; ?>
 
 <!DOCTYPE html>
 
@@ -14,7 +14,6 @@
  
      <!-- Custom styles for admin dashboard -->
   
-     <link href="css/admin_dashboard.css" rel="stylesheet">
   
      <!-- Bootstrap core CSS -->
    
@@ -85,10 +84,6 @@
 <div style="width: 100%">
 <?php
 
-$conn = new mysqli("localhost", "root", "", "auction_platform");
-if ($conn -> connect_error) {
-die("Connection failed:" . $conn -> connect_error);
-}
 
 //------------------delete administrator account ----------------------
 
@@ -96,11 +91,11 @@ if (isset($_POST['delete_administrator_acc'])) {
 	echo '<div style="width:100%; float:left;"id="administrator_accounts"><h2>Administrator Accounts</h2></div>';
 	$id=$_REQUEST['administrator_id'];
 	$sql_administrator = "DELETE FROM administrator_accounts WHERE administrator_id=$id";
-	$conn -> query($sql_administrator);
+	$connection -> query($sql_administrator);
 	
 	
 	$sql_administrator = "SELECT administrator_id,admin_name,admin_surname FROM administrator_accounts ORDER BY administrator_id";
-	$result = $conn -> query($sql_administrator);
+	$result = $connection -> query($sql_administrator);
 	
 
 //------------------show all admin accounts following deletion----------------------
@@ -155,21 +150,21 @@ if (isset($_POST['delete_administrator_acc'])) {
 
 <div style="width: 100%">
 <?php
-$conn = new mysqli("localhost", "root", "", "auction_platform");
-if ($conn -> connect_error) {
-die("Connection failed:" . $conn -> connect_error);
-}
+// $connection = new mysqli("localhost", "root", "", "auction_platform");
+// if ($connection -> connectionect_error) {
+// die("Connectionection failed:" . $connection -> connectionect_error);
+// }
 //------------------delete seller account----------------------
 
 if (isset($_POST['delete_seller_acc'])) {
 	echo '<div style="width:100%; float:left;"id="seller_accounts"><h2>Seller Accounts</h2></div>';
 	$id=$_REQUEST['seller_id'];
 	$sql_sellers = "DELETE FROM seller_accounts WHERE seller_id=$id";
-	$conn -> query($sql_sellers);
+	$connection -> query($sql_sellers);
 	
 	
 	$sql_sellers = "SELECT seller_id,fullname,email,password FROM seller_accounts ORDER BY seller_id";
-	$result = $conn -> query($sql_sellers);
+	$result = $connection -> query($sql_sellers);
 	
 
 //------------------show all seller accounts following deletion----------------------
@@ -224,10 +219,7 @@ if (isset($_POST['delete_seller_acc'])) {
 <div style="width: 100%">
 <?php
 
-$conn = new mysqli("localhost", "root", "", "auction_platform");
-if ($conn -> connect_error) {
-die("Connection failed:" . $conn -> connect_error);
-}
+
 
 //------------------delete buyer account----------------------
 
@@ -235,11 +227,11 @@ if (isset($_POST['delete_buyer_acc'])) {
 	echo '<div style="width:100%; float:left;"id="buyer_accounts"><h2>Buyer Accounts</h2></div>';
 	$id=$_REQUEST['buyer_id'];
 	$sql_buyers = "DELETE FROM buyer_accounts WHERE buyer_id=$id";
-	$conn -> query($sql_buyers);
+	$connection -> query($sql_buyers);
 	
 	
 	$sql_buyers = "SELECT buyer_id,fullname,email,password FROM buyer_accounts ORDER BY buyer_id";
-	$result = $conn -> query($sql_buyers);
+	$result = $connection -> query($sql_buyers);
 	
 
 //------------------show all buyer accounts following deletion----------------------

@@ -6,7 +6,7 @@ function return_activities(bidding_activities,bided_items,
 		total_string += '<strong class="d-inline-block mb-1 text-danger">Bidding Activities</strong>';
 	for (var i=0;i<bided_items.length;i++) {
 		total_string += '<div class="media text-muted pt-3">'+
-  							'<img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;" src="images/'+bided_items[i][1]+'" data-holder-rendered="true">'+
+  							'<img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="img" class="mr-2 rounded" style="width: 32px; height: 32px;" src="images/'+bided_items[i][1]+'" data-holder-rendered="true">'+
   							'<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">'+
     							'<strong class="d-block text-gray-dark">'+bided_items[i][2]+'</strong>'+   
   							'</p>'+
@@ -61,7 +61,7 @@ function return_activities(bidding_activities,bided_items,
 		total_string += '<hr/><strong class="d-inline-block mb-1 text-danger">Watching Activities</strong>';
 	for (var i=0;i<watching_auctions_info.length;i++) {
 		total_string += '<div class="media text-muted pt-3">'+
-  							'<img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;" src="images/'+watching_auctions_info[i][9]+'" data-holder-rendered="true">'+
+  							'<img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="img" class="mr-2 rounded" style="width: 32px; height: 32px;" src="images/'+watching_auctions_info[i][9]+'" data-holder-rendered="true">'+
   							'<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">'+
     							'<strong class="d-block text-gray-dark">'+watching_auctions_info[i][3]+'</strong>'+   
   							'</p>'+
@@ -118,7 +118,7 @@ function return_activities(bidding_activities,bided_items,
 
 	for (var i=0;i<sold_items.length;i++) {
 		total_string += '<div class="media text-muted pt-3">'+
-  							'<img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;" src="images/'+sold_items[i][7]+'" data-holder-rendered="true">'+
+  							'<img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="img" class="mr-2 rounded" style="width: 32px; height: 32px;" src="images/'+sold_items[i][7]+'" data-holder-rendered="true">'+
   							'<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">'+
     							'<strong class="d-block text-gray-dark">'+sold_items[i][1]+'</strong>'+   
   							'</p>'+

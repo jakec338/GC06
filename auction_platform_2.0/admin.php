@@ -1,48 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<?php include ('template/include_files.php');?>
-<script>
-function isAdminLoginValid() {
-    //assuming everything is valid
-    //TODO: have to check on client side if everything is valid
-    var email = $("#email").val();
-    var password = $("#password").val();
-    var secretkey= $("#secretkey").val();
-    if (email == "" || password == "") {
-      $("#success-info").css("display","none");
-      $("#danger-info").css("display","block");
-      $("#danger-info").html("All fields are necessary");
-      return false;
-    }
-
-    $.ajax({ url: 'admin_login_backend.php',
-         data: {
-          'email': email,
-          'password': password,
-          'secretkey':secretkey
-        },
-         type: 'post',
-         success: function(output) {
-          alert(output);
-               output = JSON.parse(output);
-             if (output.error_code=="0") {
-                $("#success-info").css("display","block");
-                $("#danger-info").css("display","none");
-                $("#success-info").html(output.msg);
-                window.location.href = "admin_home.php";
-             } else {
-                $("#success-info").css("display","none");
-                $("#danger-info").css("display","block");
-                $("#danger-info").html(output.msg);
-             }
-         }
-    });
-
-    return true;
-  }
-
-  </script>
+<?php include ('template/include_files.php');?> 
 </head>
 <body>
   <div class="container">
@@ -65,7 +24,7 @@ function isAdminLoginValid() {
       
       <button onclick="isAdminLoginValid()" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <br>
-      <a class="align-center" href="login.html">Client Login</a>
+      <a class="align-center" href="index.php">Client Login</a>
     </form>
   </div>
 
