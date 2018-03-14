@@ -1,4 +1,5 @@
 <?php include 'connection.php'; ?>
+<?php include ('template/include_files.php');?>
 
 <!DOCTYPE html>
 

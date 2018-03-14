@@ -57,7 +57,7 @@
     </nav>
     <br>
     <?php include ('template/all_items.php');?>
-    <?php include ('template/categories.php');?>
+ 
 
 
     <div id="addItemsModal">

@@ -1,4 +1,5 @@
 <?php include './phpadmin/admin_db_connect.php'; ?>
+<?php include ('template/include_files.php');?>
 
 <!DOCTYPE html>
 
@@ -14,7 +15,7 @@
  
      <!-- Custom styles for admin dashboard -->
   
-     <link href="css/admin_dashboard.css" rel="stylesheet">
+     <!-- <link href="css/admin_dashboard.css" rel="stylesheet"> -->
   
      <!-- Bootstrap core CSS -->
    

@@ -1,7 +1,7 @@
 <script type="text/javascript" src="js/all_items.js"></script>
 <script type="text/javascript">
   $( document ).ready(function() {
-      $.ajax({ url: 'backend/all_items_backend.php',
+      $.ajax({ url: 'backend/sell_backend.php',
        data: {
         '':''
       },
@@ -9,10 +9,10 @@
        success: function(output) {
            output = JSON.parse(output);
            if (output.error_code=="0") {
-              var your_items = output.your_items;
-              var other_items = output.other_items;
-              var your_items_html = return_your_items(your_items);
-              var other_items_html = return_other_items(other_items);
+              var your_items = output.selling;
+              var other_items = output.sold;
+              var your_items_html = return_selling(your_items);
+              var other_items_html = return_sold(other_items);
               $("#your_items").html(your_items_html);
               $("#other_items").html(other_items_html);
           } else {
@@ -25,10 +25,10 @@
   });
 </script>
 
-<strong class="d-inline-block mb-2 text-primary">Your Items</strong>
+<strong class="d-inline-block mb-2 text-primary">Your Current Auctions</strong>
 <div style="margin-left:20px;" id="your_items">
 </div>
-<strong class="d-inline-block mb-2 text-primary">All other Items</strong>
+<strong class="d-inline-block mb-2 text-primary">Your Past Auctions</strong>
 <div style="margin-left:20px;" id="other_items">
 </div>
 <script src="js/jquery-sortable.js"></script>

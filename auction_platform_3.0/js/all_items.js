@@ -1,4 +1,4 @@
-function return_your_items(your_items) {
+function return_selling(selling) {
 	var total_string = '<table id="searched_table" class="table table-striped sorted_table">'+
 						  '<thead>'+
 						    '<tr>'+
@@ -13,15 +13,15 @@ function return_your_items(your_items) {
 						  '</thead>'+
 						  '<tbody>';
 
-	for (var i=0;i<your_items.length;i++) {
+	for (var i=0;i<selling.length;i++) {
 			total_string += '<tr>'+
 						      '<td scope="row">'+(i+1)+'</td>'+
-						      '<td>'+your_items[i]["item_description"]+'</td>'+
-						      '<td class="text-danger">'+your_items[i]["item_category"]+'</td>'+
-						      '<td>$'+your_items[i]["item_start_price"]+'</td>'+
-						      '<td>$'+your_items[i]["item_reserve_price"]+'</td>'+
-						      '<td>'+your_items[i]["item_added_date"]+'</td>'+
-						      '<td>'+your_items[i]["item_end_date"]+'</td>'+
+						      '<td>'+selling[i]["item_description"]+'</td>'+
+						      '<td class="text-danger">'+selling[i]["item_category"]+'</td>'+
+						      '<td>$'+selling[i]["item_start_price"]+'</td>'+
+						      '<td>$'+selling[i]["item_reserve_price"]+'</td>'+
+						      '<td>'+selling[i]["item_added_date"]+'</td>'+
+						      '<td>'+selling[i]["item_end_date"]+'</td>'+
 						    '</tr>';
 	}
 	total_string += '</tbody>'+
@@ -29,7 +29,7 @@ function return_your_items(your_items) {
 	return total_string;
 }
 
-function return_other_items(other_items) {
+function return_sold(sold) {
 	var total_string = '<table id="searched_table" class="table table-striped sorted_table">'+
 						  '<thead>'+
 						    '<tr>'+
@@ -44,15 +44,15 @@ function return_other_items(other_items) {
 						  '</thead>'+
 						  '<tbody>';
 
-	for (var i=0;i<other_items.length;i++) {
+	for (var i=0;i<sold.length;i++) {
 			total_string += '<tr>'+
 						      '<td scope="row">'+(i+1)+'</td>'+
-						      '<td>'+other_items[i]["item_description"]+'</td>'+
-						      '<td class="text-danger">'+other_items[i]["item_category"]+'</td>'+
-						      '<td>$'+other_items[i]["item_start_price"]+'</td>'+
-						      '<td>$'+other_items[i]["item_reserve_price"]+'</td>'+
-						      '<td>'+other_items[i]["item_added_date"]+'</td>'+
-						      '<td>'+other_items[i]["item_end_date"]+'</td>'+
+						      '<td>'+sold[i]["item_description"]+'</td>'+
+						      '<td class="text-danger">'+sold[i]["item_category"]+'</td>'+
+						      '<td>$'+sold[i]["item_start_price"]+'</td>'+
+						      '<td>$'+sold[i]["item_reserve_price"]+'</td>'+
+						      '<td>'+sold[i]["item_added_date"]+'</td>'+
+						      '<td>'+sold[i]["item_end_date"]+'</td>'+
 						    '</tr>';
 	}
 	total_string += '</tbody>'+
