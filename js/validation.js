@@ -79,13 +79,13 @@ function isValidForm() {
          type: 'post',
          success: function(output) {
           //  console.log(output)
-          alert(output);
+          // alert(output);
                output = JSON.parse(output);
              if (output.error_code=="0") {
                 $("#success-info").css("display","block");
                 $("#danger-info").css("display","none");
                 $("#success-info").html(output.msg);
-                window.location.href = "admin_dashboard.php";
+                window.location.href = "admin_home.php";
              } else {
                 $("#success-info").css("display","none");
                 $("#danger-info").css("display","block");
