@@ -1,6 +1,8 @@
 <?php
 require 'PHPMailerAutoload.php';
 require 'credential.php';
+require 'Phpmailer/class.phpmailer.php';
+require 'Phpmailer/class.smtp.php';
 
 function send_email($sending_email, $sending_text, $subject) {
 	$mail = new PHPMailer;

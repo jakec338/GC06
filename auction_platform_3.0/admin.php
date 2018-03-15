@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<?php include ('template/include_files.php');?>
+  <?php include ('template/include_files.php');?>
   <script type="text/javascript" src="js/dog_watcher.js"></script>
   <script type="text/javascript">
       $( document ).ready(function() {
@@ -27,7 +27,7 @@
 
       <label for="inputPassword" class="sr-only">Security Key</label>
       <input type="password" id="secretkey" class="form-control" placeholder="Security Key" required="">
-      
+
       <button onclick="isAdminLoginValid()" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
       <br>
       <a class="align-center" href="index.php">Client Login</a>

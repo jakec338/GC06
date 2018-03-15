@@ -12,7 +12,11 @@
               var your_items = output.selling;
               var other_items = output.sold;
               var your_items_html = return_selling(your_items);
+<<<<<<< Updated upstream
               var other_items_html = return_sold(other_items);
+=======
+              var other_items_html = return_other_items(other_items);
+>>>>>>> Stashed changes
               $("#your_items").html(your_items_html);
               $("#other_items").html(other_items_html);
           } else {

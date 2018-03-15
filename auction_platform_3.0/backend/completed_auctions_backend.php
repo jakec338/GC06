@@ -14,12 +14,17 @@
 
         if ($user_id >= 0) {
             
-            if ($user_type == "seller") {
-                $user_id = "";
+            if ($user_type == "seller" || $user_type == "both") {
+
+                $query = "SELECT * from `completed_items`";
+            }
+            else if($user_type=="buyer"){
+
+                $query = "SELECT * from `completed_items` where user_id = '$user_id'";
             }
 
             $max_bought_items = array();
-            $query = "SELECT * from `completed_items` where user_id = '$user_id'";
+           
             $result = mysqli_query($connection, $query);
             if (mysqli_num_rows($result)>0) {
                 while ($row = $result->fetch_array()) {

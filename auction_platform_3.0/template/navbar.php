@@ -1,4 +1,4 @@
-<?php 
+<?php
 	if (session_status() == PHP_SESSION_NONE) {
     	session_start();
 	}
@@ -19,6 +19,7 @@
 	<?php
 	} else if(isset($_SESSION['is_admin'])) {
  		?><nav class="my-2 my-md-0 mr-md-3">
+			<a class="p-2 text-dark" href="admin_home.php">Admin Home</a>
 			<a class="btn btn-outline-primary" href="logout.php">Log out</a>
 		</nav>
 	<?php

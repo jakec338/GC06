@@ -1,10 +1,18 @@
 <?php
 //------------------Current Listed Auction Items Database List----------------------------
+<<<<<<< Updated upstream
 	
 	echo '<div style="width:100%; float:left;"id="bids"><h2>Current Auction Listings</h2></div>';
 		  
 	$sql = "SELECT item_id,item_description,item_category,item_start_price,item_reserve_price,item_end_date,Seller_Accounts_seller_id FROM listed_items ORDER BY item_id";
 	$result = $conn -> query($sql);
+=======
+
+	echo '<div style="width:100%; float:left;"id="bids"><h2>Current Auction Listings</h2></div>';
+
+	$sql = "SELECT item_id,item_description,item_category,item_start_price,item_reserve_price,item_end_date,Seller_Accounts_seller_id FROM listed_items ORDER BY item_id";
+	$result = $connection -> query($sql);
+>>>>>>> Stashed changes
 
 	if ($result -> num_rows > 0) {
 	echo '
@@ -29,7 +37,11 @@
 		<td>" . $row["item_reserve_price"] . "</td>
 		<td>" . $row["item_end_date"] . "</td>
 		<td>" . $row["Seller_Accounts_seller_id"] . "</td>
+<<<<<<< Updated upstream
 			
+=======
+
+>>>>>>> Stashed changes
 	</tr>";
 	}
 
@@ -37,4 +49,8 @@
 	} else {
 	echo "0 Auction Items Listed!";
 	}
+<<<<<<< Updated upstream
 ?>
+=======
+?>
+>>>>>>> Stashed changes

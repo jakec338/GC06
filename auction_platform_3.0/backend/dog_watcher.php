@@ -9,13 +9,13 @@
 		$expired_items = array();
 		while ($row = $result->fetch_array()) {
 			$end_date = str_replace('/', '-', $row["item_end_date"]);
-	        $time = strtotime($end_date);
-	        $end_date = date('Y-m-d',$time);
-	        if($cur_date>$end_date) {
-	            if (!in_array($row, $expired_items)) {
-	                array_push($expired_items, $row["item_id"]);
-	            }
-	        }
+      $time = strtotime($end_date);
+      $end_date = date('Y-m-d',$time);
+      if($cur_date>$end_date) {
+          if (!in_array($row, $expired_items)) {
+              array_push($expired_items, $row["item_id"]);
+          }
+      }
 		}
 		$max_price_bidders = array();
 		foreach ($expired_items as $expired_item) {
@@ -37,7 +37,7 @@
 		                $max_bidder_id = $row["user_id"];
 		            }
 		        }
-		        $max_price_bidders[$expired_item] = array("max_bidder_id"=>$max_bidder_id, "max_bid_id"=>$max_bid_id, "max_bid_price"=>$max, "max_bidder" => $max_user_name, 
+		        $max_price_bidders[$expired_item] = array("max_bidder_id"=>$max_bidder_id, "max_bid_id"=>$max_bid_id, "max_bid_price"=>$max, "max_bidder" => $max_user_name,
 		        	"max_bidder_email" => $max_user_email);
 		    }
 		}
@@ -67,9 +67,9 @@
 		    $max_bid_id = $max_price_bidders[$expired_item]["max_bid_id"];
 		    $max_bid_price = $max_price_bidders[$expired_item]["max_bid_price"];
 		    $max_bidder_id = $max_price_bidders[$expired_item]["max_bidder_id"];
-		    
 
-		    $query = "INSERT INTO `completed_items` (bid_id,listed_item_id,bid_price,user_id,item_description,img_url) 
+
+		    $query = "INSERT INTO `completed_items` (bid_id,listed_item_id,bid_price,user_id,item_description,img_url)
 		    			VALUES('$max_bid_id',
 		    					'$expired_item',
 		    					'$max_bid_price',

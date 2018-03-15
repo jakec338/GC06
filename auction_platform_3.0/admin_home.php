@@ -1,4 +1,4 @@
-<?php 
+<?php
   session_start();
   if(!isset($_SESSION['is_admin'])) {
     header("Location: index.php");
@@ -17,7 +17,7 @@
   </script>
   <?php include ('connection.php');
    $ongoing_auctions = array();
-  ?> 
+  ?>
   <script type="text/javascript">
     function setPrivilege (user_id) {
       $.ajax({ url: 'backend/set_privilege_backend.php',
@@ -43,7 +43,7 @@
 </head>
 <body>
   <div class="container">
-<?php include ('template/navbar.php');?>
+    <?php include ('template/navbar.php');?>
     <?php if(isset($_SESSION['is_bid_success'])) {?>
       <div style="display:block" id="success-info" class="alert alert-success" role="alert"><?php echo $_SESSION['is_bid_success'];?></div>
     <?php unset($_SESSION['is_bid_success']); } else if(isset($_SESSION['is_bid_error'])) {?>
@@ -52,45 +52,37 @@
     <div style="display:none" id="success-info" class="alert alert-success" role="alert"></div>
     <div style="display:none" id="danger-info" class="alert alert-danger" role="alert"></div>
     <br>
-    <strong class="d-inline-block mb-2 text-primary">User Info</strong>         
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th><strong class="d-inline-block mb-2 text-danger">Fullname</strong></th>
-          <th><strong class="d-inline-block mb-2 text-danger">Type</strong></th>
-          <th><strong class="d-inline-block mb-2 text-danger">Email</strong></th>
-          <th><strong class="d-inline-block mb-2 text-danger">Privilege</strong></th>
-          <th><strong class="d-inline-block mb-2 text-danger">Set Privilege</strong></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-           <?php  
-             $query="SELECT Fullname,user_type,Email, privilege,user_id  FROM `user`";
-             $result=mysqli_query($connection,$query);
-             if(mysqli_num_rows($result)>0) {
-                while($row= mysqli_fetch_assoc($result)){
-                  if ($row["privilege"] == 0) {
-                    $user_privilege = "Admin";
-                    $checked = "checked";
-                  } else {
-                    $user_privilege = "Non-amdin";
-                    $checked = "";
-                  }
-                  if($row["user_type"]=="1")
-                    echo "<td>" . $row["Fullname"]. "</td><td>"."buyer". "</td><td> ". $row["Email"]. "</td><td>".$user_privilege."</td><td><input onchange=\"setPrivilege('".$row["user_id"]."')\" type=\"checkbox\" ".$checked." value=\"\"></td></tr>";
-                  else if($row["user_type"]=="2")
-                     echo "<td>" . $row["Fullname"]. "</td><td>"."Seller". "</td><td> ". $row["Email"]. "</td><td>".$user_privilege."</td><td><input onchange=\"setPrivilege('".$row["user_id"]."')\" type=\"checkbox\" ".$checked." value=\"\"></td></tr>";
-                  else if($row["user_type"]=="3")
-                     echo "<td>" . $row["Fullname"]. "</td><td>"."Both". "</td><td> ". $row["Email"]. "</td><td>".$user_privilege."</td><td><input onchange=\"setPrivilege('".$row["user_id"]."')\" type=\"checkbox\" ".$checked." value=\"\"></td></tr>";
-               }
-            }
-             ?>
-        </tr>
-      </tbody>
-    </table>
+    <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Administrator Dashboard</h1>
+    		  <p class="lead text-muted">Choose from below to exercise administrator editing privileges.</p>
+    		  <p>
+      			<a class="btn btn-outline-info btn-lg" href="#admin_accounts_btn" >View Administrator Accounts</a>
+      			<a class="btn btn-outline-info btn-lg" href="#seller_accounts_btn">View Seller Accounts</a>
+      			<a class="btn btn-outline-info btn-lg" href="#buyer_accounts_btn">View Buyer Accounts</a>
+      			<p class="lead text-muted"></p>
+      			<p class="lead text-muted"></p>
+      			<a class="btn btn-outline-success btn-lg" href="admin_view_auction.php" >View Bids & Listed Items</a>
+            <a class="btn btn-outline-danger btn-lg" href="admin_delete_user.php" >Delete User Account</a>
+    		  </p>
+    		</div>
+    </section>
+    <div id="admin_accounts_btn"></div>
+    <div class="container">
+      <?php include './phpadmin/admin_user_accounts_list.php'; ?>
+    </div>
 
-    <strong class="d-inline-block mb-2 text-primary">Ongoing Auctions</strong>            
+    <div id="seller_accounts_btn"></div>
+    <div class="container">
+      <?php include './phpadmin/seller_user_accounts_list.php'; ?>
+    </div>
+
+    <div id="buyer_accounts_btn"></div>
+    <div class="container">
+      <?php include './phpadmin/buyer_user_accounts_list.php'; ?>
+    </div>
+
+    <!-- <strong class="d-inline-block mb-2 text-primary">Ongoing Auctions</strong>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -102,26 +94,26 @@
       </thead>
       <tbody>
         <tr>
-           <?php  
-               $query1="SELECT  `Listed_Items_item_id`, `Buyer_Accounts_buyer_id`, `bid_price`,`item_description`,`item_category`,`Fullname`, `item_end_date` FROM `bids` INNER JOIN listed_items on listed_items.item_id=Listed_Items_item_id INNER JOIN user on user.user_id=Buyer_Accounts_buyer_id";
-               $result=mysqli_query($connection,$query1);
-                if(mysqli_num_rows($result)>0) {
-                  while($row= mysqli_fetch_assoc($result)){
-                    $cur_date = date('Y-m-d');
-                    $end_date = str_replace('/', '-', $row["item_end_date"]);
-                    $time = strtotime($end_date);
-                    $end_date = date('Y-m-d',$time);
-                    if ($cur_date<$end_date)
-                      echo "<td>" . $row["item_category"]. "</td><td>".$row["item_description"]. "</td><td> ". $row["bid_price"]. "</td><td>".$row["Fullname"]."</td></tr>";
-                  }
-                } 
+           <?php
+               // $query1="SELECT  `Listed_Items_item_id`, `Buyer_Accounts_buyer_id`, `bid_price`,`item_description`,`item_category`,`Fullname`, `item_end_date` FROM `bids` INNER JOIN listed_items on listed_items.item_id=Listed_Items_item_id INNER JOIN user on user.user_id=Buyer_Accounts_buyer_id";
+               // $result=mysqli_query($connection,$query1);
+               //  if(mysqli_num_rows($result)>0) {
+               //    while($row= mysqli_fetch_assoc($result)){
+               //      $cur_date = date('Y-m-d');
+               //      $end_date = str_replace('/', '-', $row["item_end_date"]);
+               //      $time = strtotime($end_date);
+               //      $end_date = date('Y-m-d',$time);
+               //      if ($cur_date<$end_date)
+               //        echo "<td>" . $row["item_category"]. "</td><td>".$row["item_description"]. "</td><td> ". $row["bid_price"]. "</td><td>".$row["Fullname"]."</td></tr>";
+               //    }
+               //  }
              ?>
         </tr>
       </tbody>
     </table>
 
 
-    <strong class="d-inline-block mb-2 text-primary">Completed Auctions</strong>            
+    <strong class="d-inline-block mb-2 text-primary">Completed Auctions</strong>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -133,23 +125,23 @@
       </thead>
       <tbody>
         <tr>
-           <?php  
-               $query1="SELECT  `Listed_Items_item_id`, `Buyer_Accounts_buyer_id`, `bid_price`,`item_description`,`item_category`,`Fullname`, `item_end_date` FROM `bids` INNER JOIN listed_items on listed_items.item_id=Listed_Items_item_id INNER JOIN user on user.user_id=Buyer_Accounts_buyer_id";
-               $result=mysqli_query($connection,$query1);
-                if(mysqli_num_rows($result)>0) {
-                  while($row= mysqli_fetch_assoc($result)){
-                    $cur_date = date('Y-m-d');
-                    $end_date = str_replace('/', '-', $row["item_end_date"]);
-                    $time = strtotime($end_date);
-                    $end_date = date('Y-m-d',$time);
-                    if ($cur_date>$end_date)
-                      echo "<td>" . $row["item_category"]. "</td><td>".$row["item_description"]. "</td><td> ". $row["bid_price"]. "</td><td>".$row["Fullname"]."</td></tr>";
-                  }
-                } 
+           <?php
+               // $query1="SELECT  `Listed_Items_item_id`, `Buyer_Accounts_buyer_id`, `bid_price`,`item_description`,`item_category`,`Fullname`, `item_end_date` FROM `bids` INNER JOIN listed_items on listed_items.item_id=Listed_Items_item_id INNER JOIN user on user.user_id=Buyer_Accounts_buyer_id";
+               // $result=mysqli_query($connection,$query1);
+               //  if(mysqli_num_rows($result)>0) {
+               //    while($row= mysqli_fetch_assoc($result)){
+               //      $cur_date = date('Y-m-d');
+               //      $end_date = str_replace('/', '-', $row["item_end_date"]);
+               //      $time = strtotime($end_date);
+               //      $end_date = date('Y-m-d',$time);
+               //      if ($cur_date>$end_date)
+               //        echo "<td>" . $row["item_category"]. "</td><td>".$row["item_description"]. "</td><td> ". $row["bid_price"]. "</td><td>".$row["Fullname"]."</td></tr>";
+               //    }
+               //  }
              ?>
         </tr>
       </tbody>
-    </table>
+    </table> -->
 
   </div>
 </body>

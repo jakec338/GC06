@@ -1,4 +1,4 @@
-<?php 
+<?php
   session_start();
   if(!isset($_SESSION['logged'])) {
     header("Location: index.php");
@@ -15,17 +15,18 @@
         dogwatcher();
       });
   </script>
-  
+
   <script type="text/javascript">
     $( document ).ready(function() {
       $("form#additemform").submit(function(e) {
-          e.preventDefault();    
+          e.preventDefault();
           var formData = new FormData(this);
           $.ajax({
               url: 'backend/add_item_backend.php',
               type: 'POST',
               data: formData,
               success: function (output) {
+                /*  alert(output);*/
                   output = JSON.parse(output);
                   $("#success-info").css("display","block");
                   $("#danger-info").css("display","none");
@@ -57,7 +58,11 @@
     </nav>
     <br>
     <?php include ('template/all_items.php');?>
+<<<<<<< Updated upstream
  
+=======
+    <!--?php include ('template/categories.php');?-->
+>>>>>>> Stashed changes
 
 
     <div id="addItemsModal">
@@ -72,10 +77,10 @@
                 </button>
               </div>
               <div class="modal-body">
-                
+
                   <div style="display:none" id="add_item_success-info" class="alert alert-success" role="alert"></div>
                   <div style="display:none" id="add_item_danger-info" class="alert alert-danger" role="alert"></div>
-                  
+
                   <div class="row">
                     <div class="col-md-8">
                       <div class="form-label-group">
@@ -109,8 +114,7 @@
                   <hr/>
 
                   <div class="form-label-group">
-                    <input name="item_ending_date" type="date" id="item_ending_date" class="form-control" placeholder="Ending Date (MM/DD/YYYY)" required="" autofocus="">
-                    <!-- <label for="item_ending_date"></label> -->
+                    <input name="item_ending_date" type="date" id="item_ending_date" class="form-control" placeholder="Ending Date (DD/MM/YYYY)" required="" autofocus="">
                   </div>
                   <hr/>
 
@@ -118,8 +122,8 @@
                     <input name="item_url" type="file" id="item_url" class="form-control" placeholder="Choose File" required="" autofocus="">
                     <!-- <label for="item_url"></label> -->
                   </div>
-                                
-                
+
+
               </div>
               <div class="modal-footer">
                 <button id="cancelbtn" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -128,8 +132,8 @@
               </div>
             </div>
           </div>
-        </div> 
-      </form> 
+        </div>
+      </form>
     </div>
   </div>
 </body>

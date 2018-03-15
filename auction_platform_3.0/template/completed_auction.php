@@ -26,7 +26,7 @@
   });
 </script>
 
-<strong class="d-inline-block mb-2 text-primary">Completed Acutions</strong>
+<strong class="d-inline-block mb-2 text-primary">Completed Auctions</strong>
 <div id="completed_auctions">
   <?php include("empty_block.php") ?>
 </div>

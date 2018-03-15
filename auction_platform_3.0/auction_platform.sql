@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2018 at 07:12 AM
+-- Generation Time: Mar 14, 2018 at 07:12 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -38,9 +38,8 @@ CREATE TABLE `administrator_accounts` (
 --
 
 INSERT INTO `administrator_accounts` (`administrator_id`, `secretkey`) VALUES
-(14, '543'),
-(15, '9574'),
-(17, '2361');
+(27, '2418'),
+(29, '5783');
 
 -- --------------------------------------------------------
 
@@ -57,16 +56,6 @@ CREATE TABLE `bids` (
   `rating` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `bids`
---
-
-INSERT INTO `bids` (`bid_id`, `Listed_Items_item_id`, `Buyer_Accounts_buyer_id`, `feedback`, `bid_price`, `rating`) VALUES
-(56, 43, 23, 'It is wonderful', 700, 4),
-(57, 44, 14, 'I need it.', 600, 5),
-(58, 43, 14, 'I like it', 800, 5),
-(59, 44, 15, 'Cool!!', 550, 4);
-
 -- --------------------------------------------------------
 
 --
@@ -82,9 +71,8 @@ CREATE TABLE `buyer_accounts` (
 --
 
 INSERT INTO `buyer_accounts` (`buyer_id`) VALUES
-(14),
-(15),
-(23);
+(28),
+(29);
 
 -- --------------------------------------------------------
 
@@ -127,7 +115,7 @@ CREATE TABLE `completed_items` (
 --
 
 INSERT INTO `completed_items` (`bid_id`, `listed_item_id`, `bid_price`, `user_id`, `item_description`, `img_url`) VALUES
-(55, 42, 900, 23, 'Ornate Mirror', 'Mirror.jpg');
+(61, 51, 700000, 28, 'Mirror', 'Mirror.jpg');
 
 -- --------------------------------------------------------
 
@@ -152,10 +140,7 @@ CREATE TABLE `listed_items` (
 --
 
 INSERT INTO `listed_items` (`item_id`, `item_description`, `item_category`, `item_start_price`, `item_reserve_price`, `item_end_date`, `Seller_Accounts_seller_id`, `img_url`, `item_added_date`) VALUES
-(41, 'MonaLisa', 'Paintings', '2000', '50000', '2018-03-17', 15, 'Monalisa.jpg', '2018-03-03'),
-(43, 'Statue', 'Sculpture', '400', '600', '2018-03-17', 15, 'sculpture.jpg', '2018-03-03'),
-(44, 'Table Fan', 'Loose Furniture', '300', '500', '2018-03-10', 23, 'table_image.jpg', '2018-03-03'),
-(45, 'The thinker', 'Sculpture', '3000', '5000', '2018-03-24', 23, 'the_thiker.jpg', '2018-03-03');
+(52, 'TV', 'Loose Furniture', '4000', '8000', '2018-03-24', 27, 'Screen Shot 2018-01-27 at 2.20.36 PM.png', '2018-03-14');
 
 -- --------------------------------------------------------
 
@@ -172,9 +157,7 @@ CREATE TABLE `seller_accounts` (
 --
 
 INSERT INTO `seller_accounts` (`seller_id`) VALUES
-(15),
-(17),
-(23);
+(27);
 
 -- --------------------------------------------------------
 
@@ -196,10 +179,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `privilege`, `user_type`, `Fullname`, `Email`, `Password`) VALUES
-(14, 0, 2, 'John', 'me.suraj.pandey@gmail.com', 'john'),
-(15, 0, 1, 'Harry', 'me.hira.kafle@gmail.com', 'harry'),
-(17, 0, 3, 'Richard', 'dpnrau@gmail.com', 'richard'),
-(23, 1, 1, 'David', 'kafleradhika1234@gmail.com', 'david');
+(27, 0, 3, 'Harry', 'me.hira.kafle@gmail.com', 'harry'),
+(28, 2, 2, 'Simon', 'dextervishnukumar@gmail.com', 'simon'),
+(29, 0, 2, 'David', 'dpnrau@gmail.com', 'david');
 
 -- --------------------------------------------------------
 
@@ -211,13 +193,6 @@ CREATE TABLE `watching_auctions` (
   `user_id` int(11) NOT NULL,
   `listed_item_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `watching_auctions`
---
-
-INSERT INTO `watching_auctions` (`user_id`, `listed_item_id`) VALUES
-(14, 43);
 
 --
 -- Indexes for dumped tables
@@ -287,44 +262,44 @@ ALTER TABLE `watching_auctions`
 --
 
 --
--- AUTO_INCREMENT for table `administrator_accounts`
---
-ALTER TABLE `administrator_accounts`
-  MODIFY `administrator_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
 -- AUTO_INCREMENT for table `bids`
 --
 ALTER TABLE `bids`
-  MODIFY `bid_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `bid_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `buyer_accounts`
 --
 ALTER TABLE `buyer_accounts`
-  MODIFY `buyer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `buyer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `listed_items`
 --
 ALTER TABLE `listed_items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `seller_accounts`
 --
 ALTER TABLE `seller_accounts`
-  MODIFY `seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `administrator_accounts`
+--
+ALTER TABLE `administrator_accounts`
+  ADD CONSTRAINT `administrator_accounts_ibfk_1` FOREIGN KEY (`administrator_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `bids`

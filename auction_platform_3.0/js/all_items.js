@@ -1,7 +1,7 @@
 function return_selling(selling) {
 	var total_string = '<table id="searched_table" class="table table-striped sorted_table">'+
-						  '<thead>'+
-						    '<tr>'+
+ 						  '<thead>'+
+ 						    '<tr>'+
 						      '<th scope="col"></th>'+
 						      '<th scope="col">Item</th>'+
 						      '<th scope="col">Category</th>'+
