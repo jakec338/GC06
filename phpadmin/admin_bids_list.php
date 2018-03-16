@@ -45,4 +45,5 @@
 	} else {
 	echo "0 Items have bids placed on them";
 	}
+
 ?>

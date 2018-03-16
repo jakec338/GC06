@@ -1,11 +1,9 @@
 function return_selling(selling) {
-
 	var total_string = '<table id="searched_table" class="table table-striped sorted_table">'+
  						  '<thead>'+
  						    '<tr>'+
 						      '<th scope="col"></th>'+
-									'<th scope="col">Item</th>'+
-									'<th scope="col">Current Bid</th>'+
+						      '<th scope="col">Item</th>'+
 						      '<th scope="col">Category</th>'+
 						      '<th scope="col">Starting Price</th>'+
 						      '<th scope="col">Reserved Price</th>'+
@@ -16,13 +14,9 @@ function return_selling(selling) {
 						  '<tbody>';
 
 	for (var i=0;i<selling.length;i++) {
-		if (selling[i]["MAX(bid_price)"]==null){
-			selling[i]["MAX(bid_price)"] = 0;
-		}
 			total_string += '<tr>'+
 						      '<td scope="row">'+(i+1)+'</td>'+
-									'<td>'+selling[i]["item_description"]+'</td>'+
-									'<td>$'+selling[i]["bid_price"]+'</td>'+
+						      '<td>'+selling[i]["item_description"]+'</td>'+
 						      '<td class="text-danger">'+selling[i]["item_category"]+'</td>'+
 						      '<td>$'+selling[i]["item_start_price"]+'</td>'+
 						      '<td>$'+selling[i]["item_reserve_price"]+'</td>'+

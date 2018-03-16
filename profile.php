@@ -29,7 +29,7 @@
     <hr/>
     <?php include ('template/activity.php');?>
     <hr/>
-    <!-- <?php include ('template/completed_auction.php');?> -->
+    <?php include ('template/completed_auction.php');?>
     <hr/>
     <?php include ('template/ongoing_auction.php');?>
     

@@ -60,11 +60,6 @@
                 }
             }
 
-
-            // $query = "SELECT * from `listed_items` WHERE UNIX_TIMESTAMP(item_end_date) >= UNIX_TIMESTAMP()";
-            // $result = mysqli_query($connection, $query);
-            
-
             $result = watching_auctions($connection,$user_id);
             while($row = $result->fetch_row()) {
                 array_push($watching_auctions, $row[1]);
