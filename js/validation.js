@@ -4,7 +4,7 @@ function validateEmail(email) {
 }
 
 function isValidForm() {
-
+    console.log("tft");
     //assuming everything is valid
     //TODO: have to check on client side if everything is valid
     var full_name = $("#full_name").val();
@@ -48,6 +48,7 @@ function isValidForm() {
                 $("#success-info").css("display","block");
                 $("#danger-info").css("display","none");
                 $("#success-info").html(output.msg);
+                window.location.href = "index.php";
              } else {
                 $("#success-info").css("display","none");
                 $("#danger-info").css("display","block");
@@ -77,6 +78,7 @@ function isValidForm() {
         },
          type: 'post',
          success: function(output) {
+          console.log(output);
               output = JSON.parse(output);
              if (output.error_code=="0") {
                 $("#success-info").css("display","block");

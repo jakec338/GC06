@@ -23,8 +23,15 @@
         if ($bid_rating == "Rating") {
             $bid_rating = 0;
         }
+        $max_bid=0;
+        $query2 = "SELECT MaxBid FROM listed_items t LEFT JOIN bids ON t.item_id=bids.Listed_Items_item_id INNER JOIN (SELECT item_id, MAX(bid_price) AS MaxBid FROM listed_items LEFT JOIN bids ON`listed_items`.`item_id`=bids.Listed_Items_item_id GROUP BY item_id) q ON bids.Listed_Items_item_id = q.item_id AND bids.bid_price = q.MaxBid WHERE q.item_id = '$bid_item_id'";
+        $max_bid_result = mysqli_query($connection, $query2);
+        while ($row = $max_bid_result->fetch_array()){
+            $max_bid = $row["MaxBid"];
+        }
+        
 
-        if ($bid_price > $bidstartingprice) {
+        if ($bid_price > $bidstartingprice && $bid_price > $max_bid) {
             $query = "INSERT INTO `bids` (Listed_Items_item_id, Buyer_Accounts_buyer_id, feedback, bid_price, rating) VALUES ('$bid_item_id', '$user_id', '$bid_feedback', '$bid_price', '$bid_rating')";
 
             $result = mysqli_query($connection, $query);
@@ -58,7 +65,7 @@
                 $_SESSION['is_bid_error'] = $msg;
             }
         } else {
-            $msg ="Bid price is less than Bid Starting Price";
+            $msg ="Bid price is less than Bid Starting Price or Current highest Bid";
             $error_code = "1";
             $_SESSION['is_bid_error'] = $msg;
         }

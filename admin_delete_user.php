@@ -65,7 +65,7 @@
 <div style="width: 100%">
 <?php
 
-$conn = new mysqli("localhost", "root", "root", "auction_platform");
+$conn = new mysqli("localhost", "root", "", "auction_platform3");
 if ($conn -> connect_error) {
 die("Connection failed:" . $conn -> connect_error);
 }
@@ -135,7 +135,7 @@ if (isset($_POST['delete_administrator_acc'])) {
 
 <div style="width: 100%">
 <?php
-$conn = new mysqli("localhost", "root", "root", "auction_platform");
+$conn = new mysqli("localhost", "root", "", "auction_platform3");
 if ($conn -> connect_error) {
   die("Connection failed:" . $conn -> connect_error);
 }
@@ -203,7 +203,7 @@ if (isset($_POST['delete_seller_acc'])) {
 <div style="width: 100%">
 <?php
 
-$conn = new mysqli("localhost", "root", "root", "auction_platform");
+$conn = new mysqli("localhost", "root", "", "auction_platform3");
 if ($conn -> connect_error) {
 die("Connection failed:" . $conn -> connect_error);
 }

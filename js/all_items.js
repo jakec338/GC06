@@ -14,6 +14,9 @@ function return_selling(selling) {
 						  '<tbody>';
 
 	for (var i=0;i<selling.length;i++) {
+		if (selling[i]["bid_price"]==null){
+			selling[i]["bid_price"] = "N/A";
+		}
 			total_string += '<tr>'+
 						      '<td scope="row">'+(i+1)+'</td>'+
 						      '<td>'+selling[i]["item_description"]+'</td>'+

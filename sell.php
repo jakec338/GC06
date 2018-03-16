@@ -58,11 +58,7 @@
     </nav>
     <br>
     <?php include ('template/all_items.php');?>
-<<<<<<< Updated upstream
  
-=======
-    <!--?php include ('template/categories.php');?-->
->>>>>>> Stashed changes
 
 
     <div id="addItemsModal">
